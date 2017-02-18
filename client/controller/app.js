@@ -6,10 +6,6 @@ app.factory('Posts', function ($firebase, fbURL) {
     return $firebase(new Firebase(fbURL)).$asArray();
 });
 
-app.factory('Users', function ($firebase, fbURL) {
-    return $firebase(new Firebase(fbURL)).$asArray();
-});
-
 app.config(function ($routeProvider) {
     $routeProvider
         .when('/', {
@@ -28,7 +24,7 @@ app.filter('startFrom', function() {
     }
 });
 //controller
-app.controller('MainController', function ($scope, $firebase, Posts, Users) {
+app.controller('MainController', function ($scope, $firebase, Posts) {
     
     //for human prove
     //var once=true;
@@ -41,7 +37,6 @@ app.controller('MainController', function ($scope, $firebase, Posts, Users) {
     ///
 
     $scope.posts = Posts;
-    $scope.users = Users;
 
     $scope.wiki = function(post){
         post.url='https://en.wikipedia.org/wiki/'+post.name
@@ -80,15 +75,15 @@ app.controller('MainController', function ($scope, $firebase, Posts, Users) {
                 return;
             }
 
-            for (var i = 0; i < Users.length; i++) {
-                if (Users[i].kind==='user' && Users[i].username===signd.username){
+            for (var i = 0; i < Posts.length; i++) {
+                if (Posts[i].kind==='user' && Posts[i].username===signd.username){
                     exist=true;  
                 }
             }
             if (exist){
                 alert("Username already exists!")
             }else{
-                Users.$add({
+                Posts.$add({
                     kind:'user',
                     username:signd.username,
                     password:"jfiwoehfewhfwehu2ue2y3du2y930dhx2h8d498xh4dyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhx2h8d498xh4dyh47hhd473dyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhdyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhdyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhdyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dharchivedjfiwoehfewhfwehu2ue2y3du2y930dhx2h8d498xh4dyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhx2h8d498xh4dyh47hhd473dyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhdyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhdyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhdyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dh"+signd.password+"jfiwoehfewhfwehu2ue2y3du2y930dhx2h8d498xh4dyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhx2h8d498xh4dyh47hhd473dyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhdyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhdyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhdyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dh"
@@ -103,8 +98,8 @@ app.controller('MainController', function ($scope, $firebase, Posts, Users) {
     $scope.login = function(signd) {
         signd.username=signd.username.toLowerCase();
         if (signd.username && signd.password && signd.human===r+"") {
-            for (var i = 0; i < Users.length; i++) {
-                if (Users[i].kind==='user' && Users[i].username===signd.username && Users[i].password==="jfiwoehfewhfwehu2ue2y3du2y930dhx2h8d498xh4dyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhx2h8d498xh4dyh47hhd473dyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhdyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhdyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhdyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dharchivedjfiwoehfewhfwehu2ue2y3du2y930dhx2h8d498xh4dyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhx2h8d498xh4dyh47hhd473dyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhdyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhdyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhdyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dh"+signd.password+"jfiwoehfewhfwehu2ue2y3du2y930dhx2h8d498xh4dyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhx2h8d498xh4dyh47hhd473dyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhdyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhdyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhdyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dh"){
+            for (var i = 0; i < Posts.length; i++) {
+                if (Posts[i].kind==='user' && Posts[i].username===signd.username && Posts[i].password==="jfiwoehfewhfwehu2ue2y3du2y930dhx2h8d498xh4dyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhx2h8d498xh4dyh47hhd473dyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhdyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhdyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhdyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dharchivedjfiwoehfewhfwehu2ue2y3du2y930dhx2h8d498xh4dyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhx2h8d498xh4dyh47hhd473dyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhdyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhdyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhdyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dh"+signd.password+"jfiwoehfewhfwehu2ue2y3du2y930dhx2h8d498xh4dyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhx2h8d498xh4dyh47hhd473dyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhdyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhdyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhdyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dh"){
                     $scope.authData={twitter:{}};
                     $scope.authData.username=signd.username;
                     $scope.authData.password="jfiwoehfewhfwehu2ue2y3du2y930dhx2h8d498xh4dyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhx2h8d498xh4dyh47hhd473dyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhdyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhdyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhdyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dharchivedjfiwoehfewhfwehu2ue2y3du2y930dhx2h8d498xh4dyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhx2h8d498xh4dyh47hhd473dyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhdyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhdyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhdyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dh"+signd.password+"jfiwoehfewhfwehu2ue2y3du2y930dhx2h8d498xh4dyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhx2h8d498xh4dyh47hhd473dyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhdyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhdyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dhdyh47hhd473jfiwoehfewhfwehu2ue2y3du2y930dh"
@@ -166,11 +161,11 @@ app.controller('MainController', function ($scope, $firebase, Posts, Users) {
         }
     }
     $scope.addVote = function (post) {
-        if (post.votedby.includes($scope.authData.twitter.username)){
-            post.votedby=post.votedby.split(' ').splice(post.votedby.split(' ').indexOf($scope.authData.twitter.username)-1,1).join("");
+        if (post.votedby.includes($scope.authData.username)){
+            post.votedby=post.votedby.split(" "+$scope.authData.username).join("")
             post.votes--;
         }else{
-            post.votedby=post.votedby+" "+$scope.authData.twitter.username;
+            post.votedby=post.votedby+" "+$scope.authData.username;
             post.votes++;
         }
         Posts.$save(post);
@@ -247,14 +242,14 @@ app.controller('MainController', function ($scope, $firebase, Posts, Users) {
     }
 
     $scope.ChkUsrCom = function(comment){
-        if(comment.user===$scope.authData.twitter.username){
+        if(comment.user===$scope.authData.username){
             return true
         }
         return false
     }
 
     $scope.ChkUsrPst = function(post){
-        if(post.user===$scope.authData.twitter.username){
+        if(post.user===$scope.authData.username){
             return true
         }
         return false
