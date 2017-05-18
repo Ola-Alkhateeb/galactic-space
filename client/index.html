@@ -1,10 +1,21 @@
 <!DOCTYPE html>
 
-<html  ng-app="dataApp" >
+<html ng-app="myApp" >
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
   <title>Galactic Space</title>
+
+  <link rel="stylesheet" type="text/css" href="/css/default.css" />
+  <link rel="stylesheet" type="text/css" href="/css/planetarium.css" />
+  <link rel="stylesheet" type="text/css" href="/css/style.css" />
+  <link rel="stylesheet" type="text/css" href="/css/styles.css">
+   <link rel="stylesheet" href="/css/bootstrap.css">
+
+</head>
+<body>
+
+    <div ng-view ></div>
 
   <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
   <script type="text/javascript" src="js/jquery.planetarium.js"></script>
@@ -12,182 +23,11 @@
   <script src="lib/angular-route/angular-route.js"></script>
   <script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
   <script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
-
-  <link rel="stylesheet" type="text/css" href="/css/default.css" />
-  <link rel="stylesheet" type="text/css" href="/css/planetarium.css" />
-  <link rel="stylesheet" type="text/css" href="/css/style.css" />
-  <link rel="stylesheet" type="text/css" href="/css/styles.css">
-   <link rel="stylesheet" href="/css/bootstrap.css">
-  <script src="/controller/app.js"></script>
-  <script type="text/javascript" src = "/controller/data.js"></script>
-</head>
-
-<body>
-  <div class="container" ng-controller="dataContorller">
-   <div class="header">
-    <h1>Galactic Space</h1>	
-  </div>
- <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="index.html">Galactic space</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="index.html">Solar System</a></li>
-      <li><a href="news.html">News</a></li>
-      <li><a href="index2.html" >Posts</a></li>
-    </ul>
-  </div>
-</nav>
-
-
-  <div class="sun"><img src="img/580b585b2edbce24c47b2714.png" style="width:90%;height: 90%;" >
-  </div>
-
-
-  <div style="margin-left:-60%" data-ptr-autospin="17590ms" data-ptr-angle="0deg" data-ptr-glow="0 0 50px rgba(255,255,255,0.35), inset 33px 20px 50px rgba(0,0,0,0.5)" data-ptr-size="38x38" data-ptr-pattern="img/mercury.jpg" class="jupiter planet"   ng-click="findOne(1)" ></div>
-
-
-  <ul class = "text">
-    <div ng-if= "planet.id === 1"  ng-show = "planet.showPlanet">
-      <p><b>Name : </b>{{planet.name}} </p>
-      <p><b>Info : </b>{{planet.info}} </p>
-      <p><b>Discovery : </b>{{planet.Discovery}} </p>
-      <p><b>Named For : </b>{{planet.NamedFor}} </p>
-      <p><b>Diameter : </b>{{planet.Diameter}} </p>
-      <p><b>Orbit : </b>{{planet.Orbit}} </p>
-      <p><b>Day : </b>{{planet.Day}} </p>
-    </div>
-    </ul>
-
-
-    <div style="margin-left:60%" data-ptr-autospin="11675ms" data-ptr-angle="-3deg" data-ptr-glow="0 0 50px rgba(255,255,255,0.35), inset 33px 20px 50px rgba(0,0,0,0.5)" data-ptr-size="95x95" data-ptr-pattern="img/venus.jpg" class="jupiter planet"  ng-click="findOne(2)"></div>
-     <ul class = "text">
-    <div ng-if= "planet.id === 2"  ng-show = "planet.showPlanet">
-      <p><b>Name : </b>{{planet.name}} </p>
-      <p><b>Info : </b>{{planet.info}} </p>
-      <p><b>Discovery : </b>{{planet.Discovery}} </p>
-      <p><b>Named For : </b>{{planet.NamedFor}} </p>
-      <p><b>Diameter : </b>{{planet.Diameter}} </p>
-      <p><b>Orbit : </b>{{planet.Orbit}} </p>
-      <p><b>Day : </b>{{planet.Day}} </p>
-    </div>
-    </ul>
-
+  <script type="text/javascript" src = "/app/main/data.js"></script>
+  <script type="text/javascript" src = "/app/news/news.js"></script>
+  <script type="text/javascript" src = "/app/posts/posts.js"></script>
+  <script type="text/javascript" src = "/app/app.js"></script>
   
 
-   <div  style="margin-left:-60%" data-ptr-autospin="4800ms" data-ptr-angle="23.5deg" data-ptr-glow="0 0 50px rgba(255,255,255,0.35), inset 33px 20px 50px rgba(0,0,0,0.5)" data-ptr-size="100x100" data-ptr-pattern="img/earth.jpg" class="jupiter planet"  ng-click="findOne(3)"></div>
-  <ul class = "text">
-    <div ng-if= "planet.id === 3" ng-show = "planet.showPlanet">
-      <p><b>Name : </b>{{planet.name}} </p>
-      <p><b>Info : </b>{{planet.info}} </p>
-      <p><b>Diameter : </b>{{planet.Diameter}} </p>
-      <p><b>Orbit : </b>{{planet.Orbit}} </p>
-      <p><b>Day : </b>{{planet.Day}} </p>
-    </div>
-    </ul>
-
-  <div  style="margin-left:60%" data-ptr-autospin="4900ms" data-ptr-angle="25deg" data-ptr-glow="0 0 50px rgba(255,255,255,0.35), inset 33px 20px 50px rgba(0,0,0,0.5)" data-ptr-size="53x53" data-ptr-pattern="img/mars.jpg" class="jupiter planet"  ng-click="findOne(4)"></div>
-   <ul class = "text">
-    <div ng-if= "planet.id === 4"  ng-show = "planet.showPlanet">
-      <p><b>Name : </b>{{planet.name}} </p>
-      <p><b>Info : </b>{{planet.info}} </p>
-      <p><b>Discovery : </b>{{planet.Discovery}} </p>
-      <p><b>Named For : </b>{{planet.NamedFor}} </p>
-      <p><b>Diameter : </b>{{planet.Diameter}} </p>
-      <p><b>Orbit : </b>{{planet.Orbit}} </p>
-      <p><b>Day : </b>{{planet.Day}} </p>
-    </div>
-    </ul>
-
-       
-       <div  style="margin-left:-60%" data-ptr-autospin="10000ms" data-ptr-angle="3deg" data-ptr-glow="0 0 50px rgba(255,255,255,0.35), inset 33px 20px 50px rgba(0,0,0,0.5)" data-ptr-size="300x300" data-ptr-pattern="img/Jupiter.jpg" class="jupiter planet"  ng-click="findOne(5)"></div>
-       <ul class = "text">
-    <div ng-if= "planet.id === 5" ng-show = "planet.showPlanet">
-      <p><b>Name : </b>{{planet.name}} </p>
-      <p><b>Info : </b>{{planet.info}} </p>
-      <p><b>Discovery : </b>{{planet.Discovery}} </p>
-      <p><b>Named For : </b>{{planet.NamedFor}} </p>
-      <p><b>Diameter : </b>{{planet.Diameter}} </p>
-      <p><b>Orbit : </b>{{planet.Orbit}} </p>
-      <p><b>Day : </b>{{planet.Day}} </p>
-    </div>
-    </ul>
-    
-       <div  style="margin-left:60%" data-ptr-autospin="10000ms" data-ptr-size="200x200" data-ptr-pattern="img/saturn2.png" data-ptr-ring="true" data-ptr-ringColor="linear-gradient(#b77138,grey,#513f00)" data-ptr-ringAngle= "-18deg" class="saturn planet"  ng-click="findOne(6)"></div>
-      
-     <ul class = "text">
-    <div  ng-if= "planet.id === 6" ng-show = "planet.showPlanet">
-      <p><b>Name : </b>{{planet.name}} </p>
-      <p><b>Info : </b>{{planet.info}} </p>
-      <p><b>Discovery : </b>{{planet.Discovery}} </p>
-      <p><b>Named For : </b>{{planet.NamedFor}} </p>
-      <p><b>Diameter : </b>{{planet.Diameter}} </p>
-      <p><b>Orbit : </b>{{planet.Orbit}} </p>
-      <p><b>Day : </b>{{planet.Day}} </p>
-    </div>
-    </ul>
-
-      <div style="height:50%;width:50%;margin-left: 20%"></div>
-
-      <div style="margin-left:-60%" data-ptr-autospin="10000ms" data-ptr-angle="98deg" data-ptr-glow="0 0 50px rgba(255,255,255,0.35), inset 33px 20px 50px rgba(0,0,0,0.5)" data-ptr-size="200x200" data-ptr-pattern="img/uranus.png" class="jupiter planet"  ng-click="findOne(7)"></div>
-       <ul class = "text">
-    <div ng-if= "planet.id === 7" ng-show = "planet.showPlanet">
-      <p><b>Name : </b>{{planet.name}} </p>
-      <p><b>Info : </b>{{planet.info}} </p>
-      <p><b>Discovery : </b>{{planet.Discovery}} </p>
-      <p><b>Named For : </b>{{planet.NamedFor}} </p>
-      <p><b>Diameter : </b>{{planet.Diameter}} </p>
-      <p><b>Orbit : </b>{{planet.Orbit}} </p>
-      <p><b>Day : </b>{{planet.Day}} </p>
-    </div>
-    </ul>
-
-
-    <!-- <div style="height:50%;width:50%;margin-left: 20%"></div>
-  -->
-  <div  style="margin-left:60%" data-ptr-autospin="10000ms" data-ptr-angle="30deg" data-ptr-glow="0 0 50px rgba(255,255,255,0.35), inset 33px 20px 50px rgba(0,0,0,0.5)" data-ptr-size="200x200" data-ptr-pattern="img/neptune.jpg" class="jupiter planet"  ng-click="findOne(8)"></div>
-  
-
-    <ul class = "text">
-    <div ng-if= "planet.id === 8" ng-show = "planet.showPlanet">
-      <p><b>Name : </b>{{planet.name}} </p>
-      <p><b>Info : </b>{{planet.info}} </p>
-      <p><b>Discovery : </b>{{planet.Discovery}} </p>
-      <p><b>Named For : </b>{{planet.NamedFor}} </p>
-      <p><b>Diameter : </b>{{planet.Diameter}} </p>
-      <p><b>Orbit : </b>{{planet.Orbit}} </p>
-      <p><b>Day : </b>{{planet.Day}} </p>
-    </div>
-    </ul>
-     <div  style="margin-left:-60%" data-ptr-autospin="10000ms" data-ptr-angle="30deg" data-ptr-glow="0 0 50px rgba(255,255,255,0.35), inset 33px 20px 50px rgba(0,0,0,0.5)" data-ptr-size="100x100" data-ptr-pattern="img/pluto.jpg" class="jupiter planet"  ng-click="findOne(9)"></div>
-  <ul class = "text">
-    <div ng-if= "planet.id === 9" ng-show = "planet.showPlanet">
-      <p><b>Name : </b>{{planet.name}} </p>
-      <p><b>Info : </b>{{planet.info}} </p>
-      <p><b>Discovery : </b>{{planet.Discovery}} </p>
-      <p><b>Named For : </b>{{planet.NamedFor}} </p>
-      <p><b>Diameter : </b>{{planet.Diameter}} </p>
-      <p><b>Orbit : </b>{{planet.Orbit}} </p>
-      <p><b>Day : </b>{{planet.Day}} </p>
-    </div>
-    </ul>
-
-
-<br>
-
-  <script type="text/javascript">
-   var once=true;
-   $(".planet").planetarium({
-    space: "html, body"
-  });
-   $(window).scroll(function() {
-     if(Math.abs($(window).scrollTop() + $(window).height() - $(document).height())<=10) {
-      if(once){
-        $('#test').append('<hr>');
-        console.log("bottom!");
-        once=false;
-      }
-    }
-  });
-</script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-var app = angular.module('dataApp', []);
+var app = angular.module('myApp.data', []);
 // desplaying the data for each planet ;
 app.controller('dataContorller', function($scope) {
 	$scope.planet = {};

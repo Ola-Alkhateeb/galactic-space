@@ -1,0 +1,21 @@
+<div ng-controller="PostsController">
+<div style="width: 80%; margin: 0 auto; background: url('./img/stardust.jpg') ;color:white">
+ <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/#/">Galactic space</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li ><a href="/#/">Solar System</a></li>
+      <li><a href="/#/news">News</a></li>
+      <li class="active"><a href="/#/posts" >Posts</a></li>
+    </ul>
+  </div>
+</nav>
+ 
+  </div>
+  <br>
+  <br>
+<div style="width: 70%; margin: 0 auto;">
+ <div  ng-include="'../../app/posts/chat.html'" ></div>
+ </div>

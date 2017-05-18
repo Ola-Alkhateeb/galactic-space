@@ -1,21 +1,4 @@
-var app = angular.module('space', ['ngRoute', 'firebase']);
-
-app.constant('fbURL', 'https://space-56061.firebaseio.com');
-
-app.factory('Posts', function ($firebase, fbURL) {
-    return $firebase(new Firebase(fbURL)).$asArray();
-});
-
-app.config(function ($routeProvider) {
-    $routeProvider
-        .when('/', {
-            controller: 'MainController',
-            templateUrl: 'main.html'
-        })
-        .otherwise({
-            redirectTo: '/'
-        })
-});
+var app = angular.module('myApp.posts', []);
 
 app.filter('startFrom', function() {
     return function(input, start) {
@@ -23,8 +6,9 @@ app.filter('startFrom', function() {
         return input.slice(start);
     }
 });
+
 //controller
-app.controller('MainController', function ($scope, $firebase, Posts) {
+app.controller('PostsController', function ($scope, $firebase, Posts) {
     
     //for human prove
     //var once=true;
